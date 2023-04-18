@@ -37,8 +37,17 @@
 //     }
 // })
 
-function soma(a,b){
-    console.log(`O resultado será ${a + b}`)
+// function soma(a,b){
+//     console.log(`O resultado será ${a + b}`)
 
+// }
+// soma(23, 43)
+
+
+//arrow function
+const mudaCor = () =>{
+    //função settimeout
+    setTimeout(alert("executou"),1000)
 }
-soma(23, 43)
+muda()
+    
