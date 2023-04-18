@@ -1,4 +1,3 @@
-// const liElement= document.getElementsByTagName("li")
 
 // for (let index = 0; index < liElement.length; index++) {
 //    console.log(liElement[index].textContent) 
@@ -15,3 +14,26 @@ console.log(`Arrays-1: ${nr1}`)
 console.log(`array-2: ${nr2}`)
 
 console.log(`array-3:${nr3}`)
+
+// nr3.forEach((itemDoaArray) =>{
+//     console.log(`Array-3 sendo listado ${itemDoaArray}`)
+// })
+
+nr3.map((numero, key)=>{
+
+    console.log(`${(key+1)} Itens do array- ${numero}`)
+})
+
+
+//convertendo Html em array
+const liElementHTML = document.getElementsByTagName("li")
+const liElementArray = [...liElementHTML]
+
+
+
+liElementArray.map((item, key)=>{
+    if (item.textContent == "item-39"){
+        console.log(`${key+1} - ${item.textContent = "LOCALIZADO"}`)
+    }
+})
+
