@@ -1,11 +1,11 @@
 .cabecalho{
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 20vh;
     background-color: blue;
-    color: aliceblue;
+    color: #fff;
 }
 
 .container{
@@ -14,20 +14,16 @@
     width: 100vw;
     height: 60vh;
     background-color: blueviolet;
-    color: aliceblue;
 }
 
-.central{
-    flex-grow: 1;
+.container .central{
+    flex-grow: 5;
 }
-
-
 .container .l-e{
     flex-grow: 1;
-    background-color:rgb(92, 134, 212);
+    background-color: brown;
 }
-
 .container .l-d{
     flex-grow: 1;
-    background-color: rgb(83, 20, 228);
+    background-color: coral;
 }
