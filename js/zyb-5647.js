@@ -86,10 +86,15 @@ function mudaCor(){
 
 function mudaBanner(){
 
-    let nr= Math.round(Math.random() * 3)
-    let caminho = `./img/banner-lateral-${nr}.png` 
+    let nr= Math.ceil(Math.random() * 3)
     
     const img1 = document.querySelector(".l-e > img")
+    const img2 = document.querySelector(".l-d > img")
+
+    let caminho = `./img/banner-lateral-${nr}.png` 
     img1.src = caminho
+    img2.src = caminho 
+    
+    setTimeout(mudaBanner,1000)
 }
 mudaBanner()
