@@ -17,6 +17,7 @@ listaDeUsuarios.push(usuario2);
 localStorage.setItem("listaUser",  JSON.stringify(listaDeUsuarios));
 
 
+
 //VAMOS CRIAR UM OBJETO PARA ARMAZENAR O NOSSO USUÁRIO
 // const usuario = {
 //     nomeUsuario:"",
@@ -39,24 +40,66 @@ addEventListener("click",(evento)=>{
         
         const h1Titulo = document.querySelector("#titulo");
 
+
         let lista = JSON.parse(localStorage.getItem("listaUser"));
-        const BreakError = {};
+
+
+
+        let UserValidado = {}
+
+
         try{
             lista.forEach((usuario)=> {
                 //VALIDAÇÃO
                 if(inputUserValue == usuario.nomeUsuario && inputPassValue == usuario.senhaUsuario){
-                h1Titulo.innerHTML = "Bem vindo : " + usuario.nomeUsuario;
+                    UserValidado =usuario
                 throw "VALIDADO";
-                }else{ 
-                    throw "NÃO VALIDADO";
-                }
+                } 
             });
-        }catch(err){
-            if(err == "VALIDADO"){
-                console.log("VALIDADO");
+
+            throw "NÃO VALIDADO";
+
+        }catch(msg){
+            if(msg == "VALIDADO"){
+                h1Titulo.innerHTML = "<span><strong>Login validado com sucesso</strong></span>";
+                h1Titulo.setAttribute("style","color:#00ff00")
+
+                //adicionando um token ao userValidado 
+                UserValidado["token"] =  Math.random().toString(16) + Math.random().toString(16);
+
+
+
+                localStorage.setItem("UserValidado",  JSON.stringify(UserValidado));
+                window.location.href = "../sucesso.html"
             }else{
-                console.log("NÃO VALIDADO");
+                h1Titulo.innerHTML = "<span><strong>Login ou senha inválidos</strong></span>";
+                h1Titulo.setAttribute("style","color:#ff0000")
+                window.location.href = "../erro.html"
             }
         }       
     }
 });
+
+
+try{
+    const userBemvindo = document.querySelector("#userWelcome");
+    let usuario = JSON.parse(localStorage.getItem("UserValidado"))
+    if(usuario.token != ""){
+        userBemvindo.innerHTML = usuario.nomeUsuario
+    }else{
+        window.location.href = "../erro.html"
+    }
+
+    const  botaoLogout = document.querySelector("#btnLogout");
+    addEventListener("click", ()=>{
+        localStorage.removeItem("userValidado");
+        window.location.href = "../login.html"
+    })
+
+
+}catch(erro){
+    if(userBemvindo != null){
+    userBemvindo.innerHTML = JSON.parse(localStorage.getItem("UserValidado")).nomeUsuario
+
+    }
+}
